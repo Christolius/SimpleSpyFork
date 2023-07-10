@@ -1292,7 +1292,8 @@ function genScript(remote, args)
 						elseif type(i) == "userdata" then
 							local fullname
 							for idx,var in ipairs(i.Parent:GetChildren()) do
-								if var == i then 
+								wait()
+								if var == i then
 									fullname = "game."..i.Parent:GetFullName().."["..idx.."]"
 									print(fullname)
 									break
@@ -1309,6 +1310,7 @@ function genScript(remote, args)
 						elseif type(v) == "userdata" then
 							local fullname
 							for idx,var in ipairs(v.Parent:GetChildren()) do
+								wait()
 								if var == v then 
 									fullname = "game."..v.Parent:GetFullName().."["..idx.."]"
 									print(fullname)

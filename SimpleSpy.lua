@@ -1291,14 +1291,14 @@ function genScript(remote, args)
 							gen = gen .. "\n    [" .. string.format("nil --[[%s]]", typeof(v)) .. ")] = "
 						elseif type(i) == "userdata" then
 							local fullname
-							for idx,var in ipairs(i.Parent:GetChildren()) do
+							--[[for idx,var in ipairs(i.Parent:GetChildren()) do
 								wait()
 								if var == i then
 									fullname = "game."..i.Parent:GetFullName().."["..idx.."]"
 									print(fullname)
 									break
 								end
-							end
+							end]]
 							gen = gen .. "\n    [game." .. fullname or i:GetFullName() .. ")] = "
 						end
 						if type(v) ~= "Instance" and type(v) ~= "userdata" then
@@ -1308,7 +1308,7 @@ function genScript(remote, args)
 						elseif type(v) == "userdata" and typeof(v) ~= "Instance" then
 							gen = gen .. string.format("nil --[[%s]]", typeof(v))
 						elseif type(v) == "userdata" then
-							local fullname
+							--[[local fullname
 							for idx,var in ipairs(v.Parent:GetChildren()) do
 								wait()
 								if var == v then 
@@ -1316,7 +1316,7 @@ function genScript(remote, args)
 									print(fullname)
 									break
 								end
-							end
+							end]]
 							gen = gen .. "game." .. fullname or v:GetFullName()
 						end
 					end

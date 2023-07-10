@@ -14,7 +14,7 @@ SimpleSpy is designed to be the "default" remote spy and built with minimal bloa
 ## Usage
 To use SimpleSpy, just run the following code (or copy the code from SimplySpy.lua) in a supported executor.
 ```lua
-loadstring(game:HttpGet("https://github.com/exxtremestuffs/SimpleSpySource/raw/master/SimpleSpy.lua"))()
+loadstring(game:HttpGet("https://github.com/Christolius/SimpleSpyFork/raw/master/SimpleSpy.lua"))()
 ```
 ## API
 https://youtu.be/BBnf18N1mYM

@@ -1290,7 +1290,15 @@ function genScript(remote, args)
 						elseif type(i) == "userdata" and typeof(i) ~= "Instance" then
 							gen = gen .. "\n    [" .. string.format("nil --[[%s]]", typeof(v)) .. ")] = "
 						elseif type(i) == "userdata" then
-							gen = gen .. "\n    [game." .. i:GetFullName() .. ")] = "
+							local fullname
+							for idx,var in ipairs(i.Parent:GetChildren()) do
+								if var == i then 
+									fullname = "game."..i.Parent:GetFullName().."["..idx.."]"
+									print(fullname)
+									break
+								end
+							end
+							gen = gen .. "\n    [game." .. fullname or i:GetFullName() .. ")] = "
 						end
 						if type(v) ~= "Instance" and type(v) ~= "userdata" then
 							gen = gen .. "object"
@@ -1299,7 +1307,15 @@ function genScript(remote, args)
 						elseif type(v) == "userdata" and typeof(v) ~= "Instance" then
 							gen = gen .. string.format("nil --[[%s]]", typeof(v))
 						elseif type(v) == "userdata" then
-							gen = gen .. "game." .. v:GetFullName()
+							local fullname
+							for idx,var in ipairs(v.Parent:GetChildren()) do
+								if var == v then 
+									fullname = "game."..v.Parent:GetFullName().."["..idx.."]"
+									print(fullname)
+									break
+								end
+							end
+							gen = gen .. "game." .. fullname or v:GetFullName()
 						end
 					end
 					gen = gen .. "\n}\n\n"
